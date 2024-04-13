@@ -1,0 +1,13 @@
+name: Check XCodeBuild Version
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check-xcodebuild-version:
+    runs-on: macos-latest
+    steps:
+      - name: Version
+        run: xcodebuild -version
