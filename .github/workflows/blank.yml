@@ -14,6 +14,9 @@ jobs:
         
       - name: Change Directory
         run: cd ios-app
+
+      - name: FIle
+        run: vim main.swift
         
       - name: Generate Project
         run: xcodebuild -project IOSApp.xcodeproj
