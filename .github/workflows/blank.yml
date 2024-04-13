@@ -1,4 +1,4 @@
-name: Check XCodeBuild Version
+name: XCodeBuild
 
 on:
   push:
@@ -6,8 +6,24 @@ on:
       - main
 
 jobs:
-  check-xcodebuild-version:
+  xcodebuild:
     runs-on: macos-latest
     steps:
-      - name: Version
-        run: xcodebuild -version
+      - name: Create Folder
+        run: mkdir ios-app
+        
+      - name: Change Directory
+        run: cd ios-app
+        
+      - name: Generate Project
+        run: xcodebuild -project IOSApp.xcodeproj
+        
+      - name: Change Directory
+        run: cd ..
+        
+      - name: Artifact Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: ios-app
+          path: ios-app
+        
